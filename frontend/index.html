@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SharkTask's</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="painel">
+        <!-- Cabeçalho com a identidade visual e ação principal -->
+        <header class="barra-superior">
+            <div class="marca">
+                <div class="marca__icone">
+                    <img src="../img's/logo.png" alt="Logo do gerenciador">
+                </div>
+                <div class="marca__texto">
+                    <h1>Gerenciador</h1>
+                    <p>CRUD com estilo</p>
+                </div>
+            </div>
+
+            <button class="botao-principal" type="button">+ Novo Item</button>
+        </header>
+
+        <!-- Cards de resumo das tarefas -->
+        <section class="estatisticas" aria-label="Resumo das tarefas">
+            <article class="cartao-estatistica cartao-estatistica--total">
+                <div class="cartao-estatistica__icone">
+                    <img src="../img's/caixa.svg" alt="Total">
+                </div>
+                <div>
+                    <strong>5</strong>
+                    <span>Total</span>
+                </div>
+            </article>
+
+            <article class="cartao-estatistica cartao-estatistica--active">
+                <div class="cartao-estatistica__icone">
+                    <img src="../img's/download-de-pasta.svg" alt="Ativos">
+                </div>
+                <div>
+                    <strong>2</strong>
+                    <span>Ativos</span>
+                </div>
+            </article>
+
+            <article class="cartao-estatistica cartao-estatistica--pending">
+                <div class="cartao-estatistica__icone">
+                    <img src="../img's/relogio-tres.svg" alt="Pendentes">
+                </div>
+                <div>
+                    <strong>2</strong>
+                    <span>Pendentes</span>
+                </div>
+            </article>
+
+            <article class="cartao-estatistica cartao-estatistica--done">
+                <div class="cartao-estatistica__icone">
+                    <img src="../img's/progresso-concluido.svg" alt="Concluídos">
+                </div>
+                <div>
+                    <strong>1</strong>
+                    <span>Concluídos</span>
+                </div>
+            </article>
+        </section>
+
+        <!-- Área de busca e filtros -->
+        <section class="filtros" aria-label="Filtros e busca">
+            <label class="caixa-busca">
+                <span class="caixa-busca__icone" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="7"></circle>
+                        <path d="M20 20l-3.5-3.5"></path>
+                    </svg>
+                </span>
+                <input type="search" name="q" placeholder="Buscar itens...">
+            </label>
+
+            <label class="caixa-selecao">
+                <select aria-label="Filtro de situação">
+                    <option>Todos</option>
+                    <option>Ativos</option>
+                    <option>Pendentes</option>
+                    <option>Concluídos</option>
+                </select>
+            </label>
+
+            <label class="caixa-selecao">
+                <select aria-label="Filtro de categoria">
+                    <option>Todas</option>
+                    <option>Projeto</option>
+                    <option>Trabalho</option>
+                    <option>Ideia</option>
+                </select>
+            </label>
+        </section>
+
+        <!-- Lista principal de tarefas -->
+        <section class="lista-tarefas" aria-label="Lista de tarefas">
+            <article class="cartao-tarefa">
+                <div class="cartao-tarefa__cabecalho">
+                    <h2>Redesign do Dashboard</h2>
+                </div>
+                <p>Atualizar o layout do painel principal com novos gráficos e métricas</p>
+                <div class="etiquetas">
+                    <span class="etiqueta etiqueta--azul">Ativo</span>
+                    <span class="etiqueta etiqueta--roxa">Alta</span>
+                    <span class="etiqueta">Projeto</span>
+                </div>
+            </article>
+
+            <article class="cartao-tarefa">
+                <div class="cartao-tarefa__cabecalho">
+                    <h2>Reunião com cliente</h2>
+                </div>
+                <p>Apresentação da proposta de marketing digital</p>
+                <div class="etiquetas">
+                    <span class="etiqueta etiqueta--laranja">Pendente</span>
+                    <span class="etiqueta etiqueta--vermelha">Urgente</span>
+                    <span class="etiqueta">Trabalho</span>
+                </div>
+            </article>
+
+            <article class="cartao-tarefa">
+                <div class="cartao-tarefa__cabecalho">
+                    <h2>Estudar TypeScript</h2>
+                </div>
+                <p>Completar o módulo avançado de tipos genéricos</p>
+                <div class="etiquetas">
+                    <span class="etiqueta etiqueta--azul">Ativo</span>
+                    <span class="etiqueta etiqueta--roxa">Média</span>
+                    <span class="etiqueta">Ideia</span>
+                </div>
+            </article>
+
+            <article class="cartao-tarefa">
+                <div class="cartao-tarefa__cabecalho">
+                    <h2>Backup do servidor</h2>
+                </div>
+                <p>Executar rotina semanal e validar integridade dos arquivos</p>
+                <div class="etiquetas">
+                    <span class="etiqueta etiqueta--verde">Concluído</span>
+                    <span class="etiqueta etiqueta--roxa">Baixa</span>
+                    <span class="etiqueta">Infra</span>
+                </div>
+            </article>
+        </section>
+    </main>
+</body>
+</html>
