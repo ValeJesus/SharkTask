@@ -6,6 +6,7 @@
     <meta name="description" content="SharkTask - Gerenciador de tarefas com estilo">
     <meta name="theme-color" content="#4b7bff">
     <title>SharkTask's</title>
+    <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -22,7 +23,9 @@
                 </div>
             </div>
 
-            <button class="botao-principal" type="button">+ Novo Item</button>
+            <!-- id adicionado: é por esse id que o script.js encontra esse
+                 botão e escuta o clique pra abrir o modal de criação -->
+            <button class="botao-principal" type="button" id="botao-novo-item">+ Novo Item</button>
         </header>
 
         <!-- Cards de resumo das tarefas -->
@@ -32,7 +35,10 @@
                     <img src="../img's/caixa.svg" alt="Total">
                 </div>
                 <div>
-                    <strong>5</strong>
+                    <!-- Cada <strong> ganhou um id. O conteúdo "0" aqui é só
+                         um placeholder inicial — o script.js substitui pelo
+                         valor real assim que a página carrega os dados -->
+                    <strong id="total-tarefas">0</strong>
                     <span>Total</span>
                 </div>
             </article>
@@ -42,7 +48,7 @@
                     <img src="../img's/download-de-pasta.svg" alt="Ativos">
                 </div>
                 <div>
-                    <strong>2</strong>
+                    <strong id="total-ativos">0</strong>
                     <span>Ativos</span>
                 </div>
             </article>
@@ -52,7 +58,7 @@
                     <img src="../img's/relogio-tres.svg" alt="Pendentes">
                 </div>
                 <div>
-                    <strong>2</strong>
+                    <strong id="total-pendentes">0</strong>
                     <span>Pendentes</span>
                 </div>
             </article>
@@ -62,7 +68,7 @@
                     <img src="../img's/progresso-concluido.svg" alt="Concluídos">
                 </div>
                 <div>
-                    <strong>1</strong>
+                    <strong id="total-concluidos">0</strong>
                     <span>Concluídos</span>
                 </div>
             </article>
@@ -77,78 +83,113 @@
                         <path d="M20 20l-3.5-3.5"></path>
                     </svg>
                 </span>
-                <input type="search" name="q" placeholder="Buscar itens...">
+                <!-- id="campo-busca": o JS escuta o evento "input" aqui pra
+                     filtrar a lista em tempo real, enquanto a pessoa digita -->
+                <input type="search" id="campo-busca" name="q" placeholder="Buscar itens...">
             </label>
 
             <label class="caixa-selecao">
-                <select aria-label="Filtro de situação">
-                    <option>Todos</option>
-                    <option>Ativos</option>
-                    <option>Pendentes</option>
-                    <option>Concluídos</option>
+                <!-- O "value" de cada option precisa bater exatamente com o
+                     enum StatusTarefa do back-end (ATIVO, PENDENTE, CONCLUIDO).
+                     O texto que aparece pra pessoa pode ser diferente (com
+                     acento, minúsculo etc), só o value importa pro JS -->
+                <select id="filtro-status" aria-label="Filtro de situação">
+                    <option value="">Todos</option>
+                    <option value="ATIVO">Ativos</option>
+                    <option value="PENDENTE">Pendentes</option>
+                    <option value="CONCLUIDO">Concluídos</option>
                 </select>
             </label>
 
             <label class="caixa-selecao">
-                <select aria-label="Filtro de categoria">
-                    <option>Todas</option>
-                    <option>Projeto</option>
-                    <option>Trabalho</option>
-                    <option>Ideia</option>
+                <select id="filtro-categoria" aria-label="Filtro de categoria">
+                    <option value="">Todas</option>
+                    <option value="Projeto">Projeto</option>
+                    <option value="Trabalho">Trabalho</option>
+                    <option value="Ideia">Ideia</option>
+                    <option value="Infra">Infra</option>
                 </select>
             </label>
         </section>
 
-        <!-- Lista principal de tarefas -->
-        <section class="lista-tarefas" aria-label="Lista de tarefas">
-            <article class="cartao-tarefa">
-                <div class="cartao-tarefa__cabecalho">
-                    <h2>Redesign do Dashboard</h2>
-                </div>
-                <p>Atualizar o layout do painel principal com novos gráficos e métricas</p>
-                <div class="etiquetas">
-                    <span class="etiqueta etiqueta--azul">Ativo</span>
-                    <span class="etiqueta etiqueta--roxa">Alta</span>
-                    <span class="etiqueta">Projeto</span>
-                </div>
-            </article>
-
-            <article class="cartao-tarefa">
-                <div class="cartao-tarefa__cabecalho">
-                    <h2>Reunião com cliente</h2>
-                </div>
-                <p>Apresentação da proposta de marketing digital</p>
-                <div class="etiquetas">
-                    <span class="etiqueta etiqueta--laranja">Pendente</span>
-                    <span class="etiqueta etiqueta--vermelha">Urgente</span>
-                    <span class="etiqueta">Trabalho</span>
-                </div>
-            </article>
-
-            <article class="cartao-tarefa">
-                <div class="cartao-tarefa__cabecalho">
-                    <h2>Estudar TypeScript</h2>
-                </div>
-                <p>Completar o módulo avançado de tipos genéricos</p>
-                <div class="etiquetas">
-                    <span class="etiqueta etiqueta--azul">Ativo</span>
-                    <span class="etiqueta etiqueta--roxa">Média</span>
-                    <span class="etiqueta">Ideia</span>
-                </div>
-            </article>
-
-            <article class="cartao-tarefa">
-                <div class="cartao-tarefa__cabecalho">
-                    <h2>Backup do servidor</h2>
-                </div>
-                <p>Executar rotina semanal e validar integridade dos arquivos</p>
-                <div class="etiquetas">
-                    <span class="etiqueta etiqueta--verde">Concluído</span>
-                    <span class="etiqueta etiqueta--roxa">Baixa</span>
-                    <span class="etiqueta">Infra</span>
-                </div>
-            </article>
+        <!-- Lista principal de tarefas.
+             Antes tinha 4 <article> fixos escritos à mão aqui dentro.
+             Agora a seção começa VAZIA: o script.js que vai preencher ela
+             dinamicamente com os dados que vierem da API. -->
+        <section class="lista-tarefas" id="lista-tarefas" aria-label="Lista de tarefas">
+            <!-- os cards de tarefa entram aqui via JavaScript -->
         </section>
+
+        <!-- Mensagem mostrada quando não há nenhuma tarefa pra exibir
+             (lista vazia ou filtro sem resultados). Escondida por padrão
+             com o atributo "hidden"; o JS remove esse atributo quando precisa -->
+        <p id="mensagem-vazia" class="mensagem-vazia" hidden>
+            Nenhuma tarefa encontrada.
+        </p>
     </main>
+
+    <!-- Modal (janela flutuante) de criar/editar tarefa.
+         <dialog> é uma tag nativa do HTML5: o navegador já sabe mostrar
+         ela centralizada com fundo escurecido (backdrop) quando chamamos
+         dialogElemento.showModal() no JavaScript — não precisamos de
+         nenhuma biblioteca externa pra isso. -->
+    <dialog id="modal-tarefa" class="modal">
+        <form id="form-tarefa" class="modal__formulario">
+            <h2 id="modal-titulo">Nova Tarefa</h2>
+
+            <label class="modal__campo">
+                <span>Título</span>
+                <input type="text" id="campo-titulo" required maxlength="255" placeholder="Ex: Revisar relatório mensal">
+            </label>
+
+            <label class="modal__campo">
+                <span>Descrição</span>
+                <textarea id="campo-descricao" rows="3" placeholder="Detalhes da tarefa (opcional)"></textarea>
+            </label>
+
+            <div class="modal__linha">
+                <label class="modal__campo">
+                    <span>Status</span>
+                    <select id="campo-status">
+                        <option value="ATIVO">Ativo</option>
+                        <option value="PENDENTE">Pendente</option>
+                        <option value="CONCLUIDO">Concluído</option>
+                    </select>
+                </label>
+
+                <label class="modal__campo">
+                    <span>Prioridade</span>
+                    <select id="campo-prioridade">
+                        <option value="BAIXA">Baixa</option>
+                        <option value="MEDIA">Média</option>
+                        <option value="ALTA">Alta</option>
+                        <option value="URGENTE">Urgente</option>
+                    </select>
+                </label>
+            </div>
+
+            <label class="modal__campo">
+                <span>Categoria</span>
+                <input type="text" id="campo-categoria" maxlength="100" placeholder="Ex: Projeto, Trabalho, Ideia...">
+            </label>
+
+            <!-- Campo invisível pra pessoa, mas essencial pro JS: guarda o
+                 id da tarefa quando estamos EDITANDO. Quando estamos
+                 CRIANDO uma tarefa nova, ele fica vazio. -->
+            <input type="hidden" id="campo-id">
+
+            <p id="modal-erro" class="modal__erro" hidden></p>
+
+            <div class="modal__acoes">
+                <button type="button" id="botao-cancelar" class="botao-secundario">Cancelar</button>
+                <button type="submit" class="botao-principal">Salvar</button>
+            </div>
+        </form>
+    </dialog>
+
+    <!-- O script vai no final do <body> de propósito: assim, quando ele
+         roda, todo o HTML acima já existe na página, e o JS consegue
+         encontrar todos os elementos pelos ids sem dar erro. -->
+    <script src="script.js"></script>
 </body>
 </html>

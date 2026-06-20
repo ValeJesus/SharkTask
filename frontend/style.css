@@ -279,6 +279,50 @@ select {
 	gap: 8px;
 }
 
+/* Empurra os botões de ação (editar/excluir/concluir) para a direita
+   do cabeçalho do card, deixando o título à esquerda */
+.cartao-tarefa__acoes {
+	margin-left: auto;
+	display: flex;
+	gap: 6px;
+}
+
+/* Botão circular pequeno usado pelos ícones de ação dentro do card.
+   Reaproveita a mesma paleta de cores do resto do projeto (--border,
+   --muted) em vez de inventar cores novas. */
+.botao-icone {
+	width: 28px;
+	height: 28px;
+	display: grid;
+	place-items: center;
+	border: 1px solid var(--border);
+	border-radius: 9px;
+	background: #fff;
+	color: var(--muted);
+	cursor: pointer;
+	font-size: 0.85rem;
+	line-height: 1;
+	transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.botao-icone:hover {
+	background: rgba(75, 123, 255, 0.08);
+	color: var(--blue);
+	border-color: rgba(75, 123, 255, 0.24);
+}
+
+.botao-icone--excluir:hover {
+	background: rgba(255, 107, 107, 0.1);
+	color: var(--red);
+	border-color: rgba(255, 107, 107, 0.22);
+}
+
+.botao-icone--concluir:hover {
+	background: rgba(47, 201, 137, 0.1);
+	color: var(--green);
+	border-color: rgba(47, 201, 137, 0.2);
+}
+
 .cartao-tarefa__cabecalho::before {
 	content: '';
 	width: 8px;
@@ -708,5 +752,120 @@ select {
 	.painel {
 		padding-left: max(12px, env(safe-area-inset-left));
 		padding-right: max(12px, env(safe-area-inset-right));
+	}
+}
+
+/* ========== MENSAGEM DE LISTA VAZIA ========== */
+.mensagem-vazia {
+	text-align: center;
+	color: var(--muted);
+	padding: 32px 14px;
+	font-size: 0.92rem;
+}
+
+/* ========== MODAL DE CRIAR/EDITAR TAREFA ========== */
+
+/* O navegador já renderiza <dialog> centralizado e com fundo escuro
+   (backdrop) por padrão. Aqui só ajustamos aparência: bordas
+   arredondadas, sombra e largura máxima, pra combinar com o resto
+   do design. */
+.modal {
+	border: none;
+	border-radius: var(--radius-xl);
+	padding: 0;
+	width: min(92vw, 460px);
+	box-shadow: 0 24px 60px rgba(20, 24, 50, 0.25);
+}
+
+/* ::backdrop é a camada escura atrás do modal. É um pseudo-elemento
+   especial que só existe quando o <dialog> está aberto via showModal() */
+.modal::backdrop {
+	background: rgba(15, 18, 40, 0.45);
+	backdrop-filter: blur(2px);
+}
+
+.modal__formulario {
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+	padding: 26px 24px 24px;
+}
+
+.modal__formulario h2 {
+	margin: 0 0 4px;
+	font-size: 1.15rem;
+	font-weight: 800;
+	letter-spacing: -0.02em;
+}
+
+.modal__campo {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	font-size: 0.85rem;
+	font-weight: 700;
+	color: var(--text);
+}
+
+.modal__campo input,
+.modal__campo select,
+.modal__campo textarea {
+	border: 1px solid var(--border);
+	border-radius: 12px;
+	padding: 10px 12px;
+	font-weight: 500;
+	color: var(--text);
+	background: #fff;
+	resize: vertical;
+}
+
+.modal__campo input:focus,
+.modal__campo select:focus,
+.modal__campo textarea:focus {
+	outline: none;
+	border-color: var(--blue);
+	box-shadow: 0 0 0 3px rgba(75, 123, 255, 0.15);
+}
+
+.modal__linha {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 12px;
+}
+
+.modal__erro {
+	margin: 0;
+	padding: 10px 12px;
+	border-radius: 10px;
+	background: rgba(255, 107, 107, 0.1);
+	color: #d44545;
+	font-size: 0.82rem;
+	font-weight: 600;
+}
+
+.modal__acoes {
+	display: flex;
+	justify-content: flex-end;
+	gap: 10px;
+	margin-top: 6px;
+}
+
+.botao-secundario {
+	border: 1px solid var(--border);
+	border-radius: 14px;
+	padding: 10px 16px;
+	background: #fff;
+	color: var(--muted);
+	font-weight: 700;
+	cursor: pointer;
+}
+
+.botao-secundario:hover {
+	background: #f5f6fa;
+}
+
+@media (max-width: 520px) {
+	.modal__linha {
+		grid-template-columns: 1fr;
 	}
 }
