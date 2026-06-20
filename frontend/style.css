@@ -352,41 +352,361 @@ select {
 	color: #2fc989;
 }
 
-@media (max-width: 760px) {
+/* ========== TABLET (Até 1024px) ========== */
+@media (max-width: 1024px) {
 	.painel {
-		padding: 12px 12px 20px;
+		width: 100%;
+		padding: 16px 16px 24px;
 	}
 
-	.barra-superior,
+	.barra-superior {
+		padding: 12px 12px 16px;
+		gap: 12px;
+	}
+
+	.estatisticas {
+		gap: 10px;
+		padding: 20px 10px 16px;
+	}
+
 	.filtros {
-		grid-template-columns: 1fr;
+		gap: 8px;
+		padding: 6px 10px 12px;
+	}
+}
+
+/* ========== MOBILE LANDSCAPE (760px até 1024px) ========== */
+@media (max-width: 760px) {
+	.painel {
+		padding: 14px 12px 20px;
 	}
 
 	.barra-superior {
 		display: grid;
+		grid-template-columns: 1fr;
+		padding: 12px 10px 14px;
+		gap: 12px;
+		align-items: stretch;
 		justify-content: stretch;
+	}
+
+	.marca {
+		width: 100%;
+	}
+
+	.marca__icone {
+		width: 55px;
+		height: 55px;
+	}
+
+	.marca__texto h1 {
+		font-size: 1.05rem;
 	}
 
 	.botao-principal {
 		width: 100%;
+		padding: 10px 16px;
+		font-size: 0.95rem;
 	}
 
 	.estatisticas {
-		grid-template-columns: 1fr 1fr;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 8px;
+		padding: 16px 10px 12px;
+	}
+
+	.cartao-estatistica {
+		min-height: 60px;
+		padding: 12px 14px;
+		gap: 10px;
+	}
+
+	.cartao-estatistica strong {
+		font-size: 1.05rem;
+	}
+
+	.cartao-estatistica span {
+		font-size: 0.75rem;
 	}
 
 	.filtros {
 		grid-template-columns: 1fr;
+		gap: 8px;
+		padding: 8px 10px 12px;
+	}
+
+	.caixa-busca,
+	.caixa-selecao {
+		height: 36px;
+	}
+
+	.caixa-selecao {
+		width: 100%;
+	}
+
+	.lista-tarefas {
+		gap: 8px;
+		padding: 6px 10px 0;
+	}
+
+	.cartao-tarefa {
+		padding: 14px 16px 13px;
+	}
+
+	.cartao-tarefa h2 {
+		font-size: 0.93rem;
+	}
+
+	.cartao-tarefa p {
+		font-size: 0.85rem;
+		margin: 6px 0 0 20px;
+	}
+
+	.etiquetas {
+		margin: 8px 0 0 20px;
+		gap: 6px;
+	}
+
+	.etiqueta {
+		min-height: 20px;
+		padding: 0 8px;
+		font-size: 0.68rem;
 	}
 }
 
+/* ========== MOBILE PORTRAIT (até 520px) ========== */
 @media (max-width: 520px) {
-	.estatisticas {
-		grid-template-columns: 1fr;
+	.painel {
+		padding: 12px 10px 16px;
 	}
 
-	.cartao-tarefa p,
+	.barra-superior {
+		padding: 10px 8px 12px;
+		gap: 10px;
+	}
+
+	.marca {
+		flex: 1;
+		min-width: 0;
+	}
+
+	.marca__icone {
+		width: 50px;
+		height: 50px;
+	}
+
+	.marca__texto h1 {
+		font-size: 1rem;
+	}
+
+	.marca__texto p {
+		font-size: 0.78rem;
+		margin-top: 2px;
+	}
+
+	.botao-principal {
+		width: 100%;
+		padding: 9px 14px;
+		font-size: 0.9rem;
+		border-radius: 12px;
+	}
+
+	.estatisticas {
+		grid-template-columns: 1fr;
+		gap: 8px;
+		padding: 14px 8px 10px;
+	}
+
+	.cartao-estatistica {
+		min-height: 56px;
+		padding: 12px 12px;
+		gap: 10px;
+	}
+
+	.cartao-estatistica__icone {
+		width: 28px;
+		height: 28px;
+	}
+
+	.cartao-estatistica strong {
+		font-size: 1rem;
+	}
+
+	.cartao-estatistica span {
+		font-size: 0.72rem;
+	}
+
+	.cartao-estatistica::after {
+		width: 50px;
+		height: 50px;
+		top: -15px;
+		right: -15px;
+	}
+
+	.filtros {
+		grid-template-columns: 1fr;
+		gap: 8px;
+		padding: 8px 8px 10px;
+	}
+
+	.caixa-busca,
+	.caixa-selecao {
+		height: 34px;
+		border-radius: 10px;
+	}
+
+	.caixa-busca {
+		gap: 8px;
+		padding: 0 10px;
+	}
+
+	.caixa-busca__icone {
+		width: 15px;
+		height: 15px;
+	}
+
+	.caixa-busca input,
+	.caixa-selecao select {
+		font-size: 0.9rem;
+	}
+
+	.caixa-selecao {
+		padding: 0 6px 0 10px;
+	}
+
+	.lista-tarefas {
+		gap: 8px;
+		padding: 6px 8px 0;
+	}
+
+	.cartao-tarefa {
+		padding: 12px 14px 11px;
+		border-radius: 12px;
+	}
+
+	.cartao-tarefa__cabecalho::before {
+		width: 6px;
+		height: 6px;
+	}
+
+	.cartao-tarefa h2 {
+		font-size: 0.9rem;
+	}
+
+	.cartao-tarefa p {
+		font-size: 0.82rem;
+		margin: 6px 0 0 18px;
+		line-height: 1.3;
+	}
+
 	.etiquetas {
-		margin-left: 18px;
+		margin: 8px 0 0 18px;
+		gap: 6px;
+	}
+
+	.etiqueta {
+		min-height: 18px;
+		padding: 0 7px;
+		font-size: 0.65rem;
+		border-radius: 12px;
+	}
+}
+
+/* ========== EXTRA SMALL (até 360px) ========== */
+@media (max-width: 360px) {
+	.painel {
+		padding: 10px 8px 14px;
+	}
+
+	.barra-superior {
+		padding: 8px 6px 10px;
+		gap: 8px;
+	}
+
+	.marca__icone {
+		width: 45px;
+		height: 45px;
+	}
+
+	.marca__texto h1 {
+		font-size: 0.95rem;
+	}
+
+	.botao-principal {
+		padding: 8px 12px;
+		font-size: 0.85rem;
+	}
+
+	.estatisticas {
+		padding: 12px 6px 8px;
+	}
+
+	.cartao-estatistica {
+		padding: 10px 10px;
+		min-height: 52px;
+	}
+
+	.cartao-estatistica strong {
+		font-size: 0.95rem;
+	}
+
+	.cartao-tarefa {
+		padding: 10px 12px 9px;
+	}
+
+	.cartao-tarefa h2 {
+		font-size: 0.85rem;
+	}
+
+	.cartao-tarefa p {
+		font-size: 0.8rem;
+		margin-left: 16px;
+	}
+
+	.etiquetas {
+		margin-left: 16px;
+	}
+
+	.etiqueta {
+		font-size: 0.62rem;
+		padding: 0 6px;
+	}
+}
+
+/* ========== ACESSIBILIDADE - REDUZIR MOVIMENTO ========== */
+@media (prefers-reduced-motion: reduce) {
+	* {
+		animation: none !important;
+		transition: none !important;
+	}
+}
+
+/* ========== ACESSIBILIDADE - CONTRASTE ALTO ========== */
+@media (prefers-contrast: more) {
+	:root {
+		--border: rgba(27, 35, 67, 0.2);
+		--shadow: 0 12px 30px rgba(42, 56, 113, 0.15);
+	}
+
+	.cartao-tarefa,
+	.cartao-estatistica,
+	.caixa-busca,
+	.caixa-selecao {
+		border-width: 2px;
+	}
+}
+
+/* ========== SUPORTE A DISPOSITIVOS COM NOTCH ========== */
+@supports (padding: max(0px)) {
+	body {
+		padding-left: max(0px, env(safe-area-inset-left));
+		padding-right: max(0px, env(safe-area-inset-right));
+		padding-top: max(0px, env(safe-area-inset-top));
+		padding-bottom: max(0px, env(safe-area-inset-bottom));
+	}
+
+	.painel {
+		padding-left: max(12px, env(safe-area-inset-left));
+		padding-right: max(12px, env(safe-area-inset-right));
 	}
 }
